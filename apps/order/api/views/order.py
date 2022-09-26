@@ -23,7 +23,7 @@ class OrderCreateApi(APIView):
     def post(self, request):
         serializer = OrderInputSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        task = tasks.start_order()
+        # task = tasks.start_order()
         order = create_order(serializer.data)
         return Response(
             OrderOutputSerilizer(order).data
